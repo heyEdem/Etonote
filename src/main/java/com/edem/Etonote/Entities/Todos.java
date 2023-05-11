@@ -7,15 +7,15 @@ import java.util.Objects;
 
 @Entity
 
-public class todos {
+public class Todos {
     @Id
-    private  long id;
-    private boolean status;
+    private  Long id;
+    private Status status;
     private long listId;
     private String note;
     private String title;
 
-    public todos(long id, boolean status, long listId, String note, String title) {
+    public Todos(long id, Status status, long listId, String note, String title) {
         this.id = id;
         this.status = status;
         this.listId = listId;
@@ -31,11 +31,11 @@ public class todos {
         this.id = id;
     }
 
-    public boolean isStatus() {
+    public Status isStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -77,7 +77,7 @@ public class todos {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof todos todos)) return false;
+        if (!(o instanceof Todos todos)) return false;
         return id == todos.id && status == todos.status && listId == todos.listId && note.equals(todos.note) && title.equals(todos.title);
     }
 

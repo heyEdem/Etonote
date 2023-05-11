@@ -6,13 +6,14 @@ import org.springframework.data.annotation.Id;
 import java.util.Objects;
 
 @Entity
-public class list {
+public class List {
 
     @Id
-    private long id;
-    private String title;
+     Long id;
+     String title;
+     Todos todos;
 
-    public list(long id, String title) {
+    public List(long id, String title) {
         this.id = id;
         this.title = title;
     }
@@ -36,7 +37,7 @@ public class list {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof list list)) return false;
+        if (!(o instanceof List list)) return false;
         return id == list.id && title.equals(list.title);
     }
 
