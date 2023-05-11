@@ -1,5 +1,4 @@
 package com.edem.Etonote.Controller;
-
 import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Repository.TodoRepository;
 import org.springframework.http.HttpStatus;
@@ -17,10 +16,12 @@ public class TodoController {
         this.todoRepository = todoRepository;
     }
 
+
     @GetMapping(" ")
     public List <Todo> getAllTodos(){
         return todoRepository.findAll();
     }
+
 
     @GetMapping("/{id}")
     public Todo getById(@PathVariable Long id){
@@ -34,5 +35,15 @@ public class TodoController {
         todoRepository.save(todo);
     }
 
+
+    @PutMapping("/{id}")
+    public void update (@RequestBody Todo todo, @PathVariable Long id ){
+        todoRepository.save(todo);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete (@PathVariable Long id, @RequestBody Todo todo){
+         todoRepository.delete(todo);
+    }
 
 }
