@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 
-public class Todos {
+public class Todo {
     @Id
     private  Long id;
     private Status status;
@@ -15,7 +15,7 @@ public class Todos {
     private String note;
     private String title;
 
-    public Todos(long id, Status status, long listId, String note, String title) {
+    public Todo(long id, Status status, long listId, String note, String title) {
         this.id = id;
         this.status = status;
         this.listId = listId;
@@ -77,8 +77,8 @@ public class Todos {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Todos todos)) return false;
-        return id == todos.id && status == todos.status && listId == todos.listId && note.equals(todos.note) && title.equals(todos.title);
+        if (!(o instanceof Todo todo)) return false;
+        return id == todo.id && status == todo.status && listId == todo.listId && note.equals(todo.note) && title.equals(todo.title);
     }
 
     @Override

@@ -11,7 +11,7 @@ public class List {
     @Id
      Long id;
      String title;
-     Todos todos;
+     Todo todo;
 
     public List(long id, String title) {
         this.id = id;

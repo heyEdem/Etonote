@@ -1,8 +1,9 @@
 package com.edem.Etonote.Controller;
 
-import com.edem.Etonote.Entities.Todos;
+import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Repository.TodoRepository;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,14 +18,21 @@ public class TodoController {
     }
 
     @GetMapping(" ")
-    public List <Todos> getAllTodos(){
+    public List <Todo> getAllTodos(){
         return todoRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Todos getById(@PathVariable Long id){
+    public Todo getById(@PathVariable Long id){
         return todoRepository.findById(id)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Todo not found"));
     }
+
+
+    @PostMapping("")
+    public void create (@Validated @RequestBody Todo todo ){
+        todoRepository.save(todo);
+    }
+
 
 }
