@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class NoteList {
+public class TodoList {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
 
