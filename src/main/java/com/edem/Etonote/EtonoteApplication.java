@@ -1,7 +1,7 @@
 package com.edem.Etonote;
 
 import com.edem.Etonote.Entities.Status;
-import com.edem.Etonote.Entities.Todo;˚
+import com.edem.Etonote.Entities.Todo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
