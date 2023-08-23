@@ -7,23 +7,23 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Todo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long todoId;
+public class NoteList {
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Status status;
+     private Long listId;
 
-    private Long listId;
+     private String listTitle;
 
-    private String note;
-
-    private String title;
+     private List <Todo> todos = new ArrayList<>();
 
 }
