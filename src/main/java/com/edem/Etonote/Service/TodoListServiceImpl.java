@@ -4,6 +4,7 @@ import com.edem.Etonote.Entities.TodoList;
 import com.edem.Etonote.Repository.TodoListRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public class TodoListServiceImpl implements TodoListService{
     private TodoListRepository repository;
@@ -14,21 +15,21 @@ public class TodoListServiceImpl implements TodoListService{
 
     @Override
     public TodoList createList(TodoList todoList) {
-        return null;
+        return repository.save(todoList);
     }
 
     @Override
     public List<TodoList> findAllLists() {
-        return null;
+        return repository.findAll();
     }
 
     @Override
     public void deleteListById(Long listId) {
-
+        repository.deleteById(listId);
     }
 
     @Override
-    public TodoList findListById(Long listId) {
-        return null;
+    public Optional<TodoList> findListById(Long listId) {
+        return repository.findById(listId);
     }
 }
