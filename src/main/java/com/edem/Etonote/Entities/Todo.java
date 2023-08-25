@@ -1,9 +1,6 @@
 package com.edem.Etonote.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 
@@ -20,10 +17,15 @@ public class Todo {
 
     private Status status;
 
-    private Long listId;
+    @ManyToOne
+    @JoinColumn(name = "TodoList_Id", nullable = false)
+    private TodoList todoList;
 
     private String note;
 
     private String title;
+
+
+
 
 }

@@ -1,20 +1,18 @@
 package com.edem.Etonote.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+//@Table(name ="TodoList")
 @Entity
 public class TodoList {
      @Id
@@ -24,6 +22,7 @@ public class TodoList {
 
      private String listTitle;
 
-     private List <Todo> todos = new ArrayList<>();
+     @OneToMany(mappedBy = "todoList")
+     private Set<Todo> todos ;
 
 }
