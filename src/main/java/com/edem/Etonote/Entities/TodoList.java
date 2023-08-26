@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -12,7 +11,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@Table(name ="TodoList")
+@Table(name ="todo_list")
 @Entity
 public class TodoList {
      @Id
@@ -23,6 +22,6 @@ public class TodoList {
      private String listTitle;
 
      @OneToMany(mappedBy = "todoList")
-     private Set<Todo> todos ;
+     private Set<Todo> todos;
 
 }
