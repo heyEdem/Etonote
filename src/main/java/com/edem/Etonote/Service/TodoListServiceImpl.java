@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 @Slf4j
 public class TodoListServiceImpl implements TodoListService{
-    private TodoListRepository repository;
+    private final TodoListRepository repository;
 
     public TodoListServiceImpl(TodoListRepository repository) {
         this.repository = repository;
