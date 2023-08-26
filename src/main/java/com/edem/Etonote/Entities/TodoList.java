@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="todo_list")
+@Table(name = "todo_list")
 @Entity
 public class TodoList {
      @Id
