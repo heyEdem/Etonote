@@ -21,6 +21,7 @@ public class Todo {
     @JoinColumn(name = "TodoList_Id", nullable = false)
     private TodoList todoList;
 
+
     private String note;
 
     private String title;
