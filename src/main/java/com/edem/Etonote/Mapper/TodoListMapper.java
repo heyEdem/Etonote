@@ -7,15 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class TodoListMapper {
 
-    public TodoList TodoListDtoToTodoList(TodoListDto listDto){
-        return new TodoList();
+    public TodoList todoListDtoToTodoList(TodoListDto listDto){
+        return null;
     }
 
-    public TodoListDto TodoListToTodoListDto (TodoList todoList){
-        return new TodoListDto(
-                todoList.getListId(),
-                todoList.getListTitle(),
-                todoList.getTodos()
-        );
+    public TodoListDto todoListToTodoListDto (TodoList todoList){
+        return TodoListDto.builder()
+                .listId(todoList.getListId())
+                .listTitle(todoList.getListTitle())
+                .build();
     }
 }

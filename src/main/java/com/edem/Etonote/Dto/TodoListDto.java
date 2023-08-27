@@ -1,10 +1,7 @@
 package com.edem.Etonote.Dto;
 
 import com.edem.Etonote.Entities.Todo;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
@@ -12,6 +9,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class TodoListDto {
     private Long listId;
     private String listTitle;
