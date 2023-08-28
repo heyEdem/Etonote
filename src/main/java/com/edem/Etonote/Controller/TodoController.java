@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/#/home")
+@RequestMapping("/home")
 public class TodoController {
     private final TodoRepository todoRepository;
     public TodoController(TodoRepository todoRepository) {
@@ -17,7 +17,7 @@ public class TodoController {
     }
 
 
-    @GetMapping(" ")
+    @GetMapping
     public List <Todo> getAllTodos(){
         return todoRepository.findAll();
     }
@@ -30,9 +30,9 @@ public class TodoController {
     }
 
 
-    @PostMapping("")
-    public void create (@Validated @RequestBody Todo todo ){
-        todoRepository.save(todo);
+    @PostMapping
+    public Todo create(@RequestBody Todo todo ){
+        return todoRepository.save(todo);
     }
 
 

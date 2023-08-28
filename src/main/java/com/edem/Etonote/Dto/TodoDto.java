@@ -16,7 +16,7 @@ public class TodoDto {
 
     private Status status;
 
-    private TodoList todoList;
+//    private TodoList todoList;
 
     private String note;
 

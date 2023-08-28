@@ -19,7 +19,7 @@ public class Todo {
     private Status status;
 
     @ManyToOne
-    @JoinColumn(name = "TodoList_Id", nullable = false)
+    @JoinColumn(name = "todo_list_id", nullable = false)
     private TodoList todoList;
 
 
