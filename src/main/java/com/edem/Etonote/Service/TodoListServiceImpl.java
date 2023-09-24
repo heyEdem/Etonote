@@ -2,12 +2,13 @@ package com.edem.Etonote.Service;
 
 import com.edem.Etonote.Entities.TodoList;
 import com.edem.Etonote.Repository.TodoListRepository;
+import com.edem.Etonote.Service.Impl.TodoListService;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Optional;
 @Slf4j
-public class TodoListServiceImpl implements TodoListService{
+public class TodoListServiceImpl implements TodoListService {
     private final TodoListRepository repository;
 
     public TodoListServiceImpl(TodoListRepository repository) {
