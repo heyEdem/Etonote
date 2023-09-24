@@ -16,7 +16,6 @@ public interface TodoListService {
 
     Optional<TodoList> findListById(Long listId);
 
-
-
+    List<TodoList> findTodoListByName(String keyword);
 
 }

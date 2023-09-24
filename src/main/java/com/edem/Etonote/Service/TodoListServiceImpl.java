@@ -34,4 +34,9 @@ public class TodoListServiceImpl implements TodoListService {
     public Optional<TodoList> findListById(Long listId) {
         return repository.findById(listId);
     }
+
+    @Override
+    public List<TodoList> findTodoListByName(String keyword) {
+        return repository.findTodoListByNameContains(keyword);
+    }
 }
