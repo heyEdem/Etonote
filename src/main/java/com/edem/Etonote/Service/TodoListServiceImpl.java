@@ -3,10 +3,14 @@ package com.edem.Etonote.Service;
 import com.edem.Etonote.Entities.TodoList;
 import com.edem.Etonote.Repository.TodoListRepository;
 import com.edem.Etonote.Service.Impl.TodoListService;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+@Service
+@Transactional
 @Slf4j
 public class TodoListServiceImpl implements TodoListService {
     private final TodoListRepository repository;
@@ -39,4 +43,5 @@ public class TodoListServiceImpl implements TodoListService {
     public List<TodoList> findTodoListByName(String keyword) {
         return repository.findTodoListByNameContains(keyword);
     }
+
 }

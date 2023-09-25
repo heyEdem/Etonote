@@ -1,6 +1,7 @@
 package com.edem.Etonote.Controller;
 import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Repository.TodoRepository;
+import com.edem.Etonote.Service.TodoListServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/home")
 public class TodoController {
-    private final TodoRepository todoRepository;
+    private TodoListServiceImpl todoRepository;
     public TodoController(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }

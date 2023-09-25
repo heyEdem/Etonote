@@ -3,11 +3,14 @@ package com.edem.Etonote.Service;
 import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Repository.TodoRepository;
 import com.edem.Etonote.Service.Impl.TodoService;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
+@Transactional
 public class TodoServiceImpl implements TodoService {
 
     private TodoRepository repository;
@@ -41,4 +44,11 @@ public class TodoServiceImpl implements TodoService {
     public List<Todo> findTodoByName(String keyword) {
         return repository.findTodoByNameContains(keyword);
     }
+
+    @Override
+    public List<Todo> findTodoByTodoListId(Long todoListId) {
+        return repository.findTodoByTodoListId(todoListId);
+    }
+
+
 }
