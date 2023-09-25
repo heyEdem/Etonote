@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -22,7 +23,7 @@ public class TodoList {
 
      private String listTitle;
 
-     @OneToMany(mappedBy = "todoList")
-     private Set<Todo> todos;
+     @OneToMany(mappedBy = "todoList",fetch = FetchType.LAZY)
+     private Set<Todo> todos = new HashSet<>();
 
 }

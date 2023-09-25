@@ -1,5 +1,6 @@
 package com.edem.Etonote.Service;
 
+import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Entities.TodoList;
 import com.edem.Etonote.Repository.TodoListRepository;
 import com.edem.Etonote.Service.Impl.TodoListService;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Slf4j
 public class TodoListServiceImpl implements TodoListService {
     private final TodoListRepository repository;
+    private TodoServiceImpl todoService;
 
     public TodoListServiceImpl(TodoListRepository repository) {
         this.repository = repository;
@@ -31,12 +33,16 @@ public class TodoListServiceImpl implements TodoListService {
 
     @Override
     public void deleteListById(Long listId) {
+        Optional<TodoList> list = findListById(listId);
+        for(Todo todo: list.get().getTodos()){
+            todoService.deleteTodoById(todo.getTodoId());
+        }
         repository.deleteById(listId);
     }
 
     @Override
     public Optional<TodoList> findListById(Long listId) {
-        return repository.findById(listId);
+       return repository.findById(listId);
     }
 
     @Override
