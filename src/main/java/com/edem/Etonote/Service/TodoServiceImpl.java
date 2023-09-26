@@ -13,7 +13,7 @@ import java.util.Optional;
 @Transactional
 public class TodoServiceImpl implements TodoService {
 
-    private TodoRepository repository;
+    private final TodoRepository repository;
 
     public TodoServiceImpl(TodoRepository repository) {
         this.repository = repository;
