@@ -21,9 +21,8 @@ public class Todo {
     private Status status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "todo_lists" , joinColumns = {@JoinColumn(name = "todo_list_id", nullable = false)})
+    @JoinColumn(name = "list_id", referencedColumnName = "listId")
     private TodoList todoList;
-
 
     private String note;
 

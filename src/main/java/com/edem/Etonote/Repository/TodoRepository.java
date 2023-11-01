@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
-    List<Todo> findTodoByNameContains(String keyword);
+    List<Todo> findTodoByTitleContains(String keyword);
 
 
     @Query(value ="select * from todos as t where t.todo_id in (select e.todo_id from todo_lists as e where e.todo_list_id=:todoListId)", nativeQuery = true)

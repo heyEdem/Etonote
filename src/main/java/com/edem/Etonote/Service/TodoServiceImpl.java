@@ -42,7 +42,7 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public List<Todo> findTodoByName(String keyword) {
-        return repository.findTodoByNameContains(keyword);
+        return repository.findTodoByTitleContains(keyword);
     }
 
     @Override
