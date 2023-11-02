@@ -1,10 +1,11 @@
 package com.edem.Etonote.Controller;
+
 import com.edem.Etonote.Entities.Todo;
-import com.edem.Etonote.Repository.TodoRepository;
-import com.edem.Etonote.Service.TodoListServiceImpl;
 import com.edem.Etonote.Service.TodoServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -12,23 +13,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/home")
+@RequiredArgsConstructor
 public class TodoController {
-    private TodoServiceImpl service;
 
-    public TodoController(TodoServiceImpl service) {
-        this.service = service;
-    }
+    private final TodoServiceImpl service;
 
     @GetMapping
-    public List <Todo> getAllTodos(){
-        return service.findAllTodos();
+    public String getAllTodos(Model model){
+        List<Todo> todos  = service.findAllTodos();
+        model.addAttribute("todos",todos);
+        return "index.";
     }
 
 
     @GetMapping("/{id}")
-    public Todo getById(@PathVariable Long id){
-        return service.findTodoById(id)
+    public String getById(@PathVariable Long id){
+        Todo todo = service.findTodoById(id)
                 .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"Todo not found"));
+        return "single-todo";
     }
 
 
