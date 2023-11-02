@@ -11,22 +11,20 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "todos")
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "todo_id")
     private Long todoId;
-
+    private String title;
     private Status status;
+    private String note;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "list_id", referencedColumnName = "listId")
     private TodoList todoList;
 
-    private String note;
 
-    private String title;
 
 
 

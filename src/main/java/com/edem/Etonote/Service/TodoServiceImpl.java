@@ -4,6 +4,8 @@ import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Repository.TodoRepository;
 import com.edem.Etonote.Service.Impl.TodoService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,13 +13,11 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@Slf4j
+@RequiredArgsConstructor
 public class TodoServiceImpl implements TodoService {
 
     private final TodoRepository repository;
-
-    public TodoServiceImpl(TodoRepository repository) {
-        this.repository = repository;
-    }
 
 
     @Override
@@ -27,11 +27,13 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public List<Todo> findAllTodos() {
+        log.info("fetching all Todos");
         return repository.findAll();
     }
 
     @Override
     public Optional <Todo> findTodoById(Long id) {
+        log.info("found Todo with id {}:", id);
         return repository.findById(id);
     }
 
