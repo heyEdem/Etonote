@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.edem.Etonote.Entities.Status.UNCOMPLETED;
+
 @Service
 @Transactional
 @Slf4j
@@ -26,9 +28,12 @@ public class TodoServiceImpl implements TodoService {
 
 
     @Override
-    public Todo createTodo(String title, String note, Status status, Long todoListId) {
+    public Todo createTodo(String title, String note, Long todoListId) {
         TodoList todoList = todoListRepository.findById(todoListId).orElseThrow(()->new EntityNotFoundException("TodoList {} not found"));
-        return repository.save(new Todo(title,note,status,todoList));
+        Todo todo = new Todo(title,note,todoListId);
+        todo.setStatus(UNCOMPLETED);
+        return repository.save(todo);
+//        return repository.save(new Todo(title,status,note,todoList));
     }
 
     @Override

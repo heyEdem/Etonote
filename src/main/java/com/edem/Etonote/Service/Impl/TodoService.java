@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public interface TodoService {
 
-    Todo createTodo(String title, String note, Status status, Long todoListId);
+    Todo createTodo(String title, String note, Long todoListId);
 
     List<Todo> findAllTodos ();
 

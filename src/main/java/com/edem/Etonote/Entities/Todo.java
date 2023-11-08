@@ -17,7 +17,7 @@ public class Todo {
     @Column(name = "todo_id")
     private Long todoId;
     private String title;
-    @Column(columnDefinition = "UNCOMPLETED")
+    //Todo set default value for the status on creation
     private Status status;
     private String note;
 
@@ -25,10 +25,9 @@ public class Todo {
     @JoinColumn(name = "list_id", referencedColumnName = "listId")
     private TodoList todoList;
 
-    public Todo(String title, String note, Status status, TodoList todoList) {
+    public Todo(String title, String note, Long todoListId) {
         this.title= title;
         this.note = note;
-        this.status=status;
         this.todoList=todoList;
     }
 
