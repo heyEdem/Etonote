@@ -1,8 +1,12 @@
 package com.edem.Etonote.Service;
 
+import com.edem.Etonote.Entities.Status;
 import com.edem.Etonote.Entities.Todo;
+import com.edem.Etonote.Entities.TodoList;
+import com.edem.Etonote.Repository.TodoListRepository;
 import com.edem.Etonote.Repository.TodoRepository;
 import com.edem.Etonote.Service.Impl.TodoService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,11 +22,13 @@ import java.util.Optional;
 public class TodoServiceImpl implements TodoService {
 
     private final TodoRepository repository;
+    private final TodoListRepository todoListRepository;
 
 
     @Override
-    public Todo createTodo(Todo todo) {
-        return repository.save(todo);
+    public Todo createTodo(String title, String note, Status status, Long todoListId) {
+        TodoList todoList = todoListRepository.findById(todoListId).orElseThrow(()->new EntityNotFoundException("TodoList {} not found"));
+        return repository.save(new Todo(title,note,status,todoList));
     }
 
     @Override
