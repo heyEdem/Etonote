@@ -30,10 +30,9 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public Todo createTodo(String title, String note, Long todoListId) {
         TodoList todoList = todoListRepository.findById(todoListId).orElseThrow(()->new EntityNotFoundException("TodoList {} not found"));
-        Todo todo = new Todo(title,note,todoListId);
+        Todo todo = new Todo(title,note,todoList);
         todo.setStatus(UNCOMPLETED);
         return repository.save(todo);
-//        return repository.save(new Todo(title,status,note,todoList));
     }
 
     @Override
@@ -51,6 +50,12 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void deleteTodoById(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public void markAsCompleted(Long todoId) {
+        Todo completedTodo = repository.findById(todoId).orElseThrow(()->new EntityNotFoundException("Todo Not Found"));
+        completedTodo.setStatus(Status.COMPLETE);
     }
 
     @Override
