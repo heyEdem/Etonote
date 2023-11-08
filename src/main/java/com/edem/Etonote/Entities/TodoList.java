@@ -25,4 +25,8 @@ public class TodoList {
      @OneToMany(mappedBy = "todoList",fetch = FetchType.LAZY)
      private Set<Todo> todos = new HashSet<>();
 
+     public TodoList (String listTitle){
+          this.listTitle =listTitle;
+     }
+
 }

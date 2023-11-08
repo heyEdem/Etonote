@@ -21,8 +21,8 @@ public class TodoListServiceImpl implements TodoListService {
 
 
     @Override
-    public TodoList createList(TodoList todoList) {
-        return repository.save(todoList);
+    public TodoList createList(String title) {
+        return repository.save(new TodoList(title));
     }
 
     @Override
