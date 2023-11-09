@@ -10,31 +10,35 @@
   <div class="container">
       <div class="card">
           <div class="card-body">
-              <div th:switch="${todos}" class="container my-5">
+              <div th:switch="${allLists}" class="container my-5">
                   <div class="col-md-10">
-                      <h2 th:case="null">No record found</h2>
                       <div th:case="*">
                           <table class="table table-striped table-responsive-md">
                               <thead>
-                              <th hidden="hidden">Id</th>
+                              <th>Id</th>
                               <th>Title</th>
-                              <th>Status</th>
-                              <th>Note</th>
+<!--                              <th>Status</th>-->
+<!--                              <th>Note</th>-->
                               </thead>
                               <tbody>
-                              <tr th:each="todo: ${todos}">
-                                  <td th:text="${todo.getId()}"></td>
-                                  <td th:text="${todo.getTitle()}"></td>
-                                  <td th:text="${todo.getStatus()}"></td>
-                                  <td  th:text="${todo.getNote()}"></td>
-
+                              <tr th:each="list: ${allLists}">
+                                  <td th:text="${list.getListId()}"></td>
+                                  <td th:text="${list.getListTitle()}"></td>
+<!--                                  <td th:text="${todo.getStatus()}"></td>-->
+<!--                                  <td  th:text="${todo.getNote()}"></td>-->
+                                  <td>
+                                      <a th:href="@{/view/{listId}(listId=${list.listId})}" class="btn btn-warning">
+                                          <button class="btn btn-warning">View</button>
+                                      </a>
+                                  </td>
                               </tr>
                               </tbody>
                           </table>
                   </div>
-
               </div>
       </div>
   </div>
+ </div>
+</div>
 </body>
 </html>
