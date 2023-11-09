@@ -24,7 +24,7 @@ public class TodoController {
         this.listService = listService;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/")
     public String getAllTodos(Model model){
         List<TodoList> lists = listService.findAllLists();
         model.addAttribute("allLists",lists);
@@ -37,7 +37,13 @@ public class TodoController {
         Optional<TodoList> list = listService.findListById(listId);
         List<Todo> todos = todoService.findTodoByTodoListId(list.get().getListId());
         model.addAttribute("todos",todos);
-        return "single-list";
+        return "listview";
+    }
+
+    @DeleteMapping("/view/{listId}/{todoId}")
+    public String deleteTodo(@PathVariable("todoId") Long todoId){
+        todoService.deleteTodo(todoService.findTodoById(todoId).get());
+        return "redirect:/view/{listId}";
     }
     //TODO: Controller methods
 }
