@@ -5,7 +5,6 @@ import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Entities.TodoList;
 import com.edem.Etonote.Repository.TodoListRepository;
 import com.edem.Etonote.Repository.TodoRepository;
-import com.edem.Etonote.Service.Impl.TodoService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -50,8 +49,8 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public void deleteTodoById(Long id) {
-        repository.deleteById(id);
+    public void deleteTodo(Todo todo) {
+        repository.deleteById(todo.getTodoId());
     }
 
     @Override

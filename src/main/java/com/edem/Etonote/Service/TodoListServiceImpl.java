@@ -3,7 +3,6 @@ package com.edem.Etonote.Service;
 import com.edem.Etonote.Entities.Todo;
 import com.edem.Etonote.Entities.TodoList;
 import com.edem.Etonote.Repository.TodoListRepository;
-import com.edem.Etonote.Service.Impl.TodoListService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -38,9 +37,9 @@ public class TodoListServiceImpl implements TodoListService {
     public void deleteListById(Long listId) {
         Optional<TodoList> list = findListById(listId);
 
-        for(Todo todo: list.get().getTodos()){
-            todoService.deleteTodoById(todo.getTodoId());
-        }
+//        for(Todo todo: list.get().getTodos()){
+//            todoService.deleteTodoById(todo.getTodoId());
+//        }
         repository.deleteById(listId);
     }
 

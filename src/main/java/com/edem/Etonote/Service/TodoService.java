@@ -1,4 +1,4 @@
-package com.edem.Etonote.Service.Impl;
+package com.edem.Etonote.Service;
 
 import com.edem.Etonote.Entities.Todo;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public interface TodoService {
 
     Optional<Todo> findTodoById(Long id);
 
-    void deleteTodoById(Long id);
+    void deleteTodo(Todo todo);
 
     void markAsCompleted(Long todoId);
 
