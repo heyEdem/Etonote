@@ -3,6 +3,8 @@ package com.edem.Etonote.Entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 
 @Data
 @Getter
@@ -19,6 +21,7 @@ public class Todo {
     private String title;
     private Status status;
     private String note;
+    private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "list_id", referencedColumnName = "listId")

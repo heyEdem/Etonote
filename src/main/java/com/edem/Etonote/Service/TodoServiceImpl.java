@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,7 @@ public class TodoServiceImpl implements TodoService {
         TodoList todoList = todoListRepository.findById(todoListId).orElseThrow(()->new EntityNotFoundException("TodoList {} not found"));
         Todo todo = new Todo(title,note,todoList);
         todo.setStatus(UNCOMPLETED);
+        todo.setCreatedAt(LocalDateTime.now());
         return repository.save(todo);
     }
 
@@ -67,6 +69,5 @@ public class TodoServiceImpl implements TodoService {
     public List<Todo> findTodoByTodoListId(Long todoListId) {
         return repository.findTodoByTodoListId(todoListId);
     }
-
 
 }
