@@ -7,7 +7,7 @@ import com.edem.Etonote.Service.TodoServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +35,7 @@ public class TodoController {
     @GetMapping("/view/{listId}")
     public String getById(@PathVariable("listId") Long listId, Model model){
         Optional<TodoList> list = listService.findListById(listId);
-        List<Todo> todos = todoService.findTodoByTodoListId(list.get().getListId());
+        List<Todo> todos = todoService.findTodoByTodoListId(listId);
         model.addAttribute("todos",todos);
         return "listview";
     }
