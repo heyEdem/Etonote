@@ -45,5 +45,6 @@ public class TodoController {
         todoService.deleteTodo(todoService.findTodoById(todoId).get());
         return "redirect:/view/{listId}";
     }
+    
     //TODO: Controller methods
 }
