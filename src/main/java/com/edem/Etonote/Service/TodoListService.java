@@ -1,4 +1,4 @@
-package com.edem.Etonote.Service.Impl;
+package com.edem.Etonote.Service;
 
 import com.edem.Etonote.Entities.TodoList;
 import org.springframework.stereotype.Service;
