@@ -37,9 +37,9 @@ public class TodoListServiceImpl implements TodoListService {
     public void deleteListById(Long listId) {
         Optional<TodoList> list = findListById(listId);
 
-//        for(Todo todo: list.get().getTodos()){
-//            todoService.deleteTodoById(todo.getTodoId());
-//        }
+        for(Todo todo: list.get().getTodos()){
+            todoService.deleteTodo(todo);
+        }
         repository.deleteById(listId);
     }
 
@@ -52,5 +52,7 @@ public class TodoListServiceImpl implements TodoListService {
     public List<TodoList> findTodoListByName(String keyword) {
         return repository.findTodoListsByListTitleContains(keyword);
     }
+
+
 
 }
