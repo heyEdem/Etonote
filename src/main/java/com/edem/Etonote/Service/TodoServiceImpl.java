@@ -69,4 +69,19 @@ public class TodoServiceImpl implements TodoService {
         return repository.findTodoByTodoListId(todoListId);
     }
 
+    @Override
+    public Todo updateTodo(Todo todoDto, Long id) {
+        Optional<Todo> result = repository.findById(id);
+        Todo todo = null;
+
+        if (result.isPresent()){
+            todo.setTodoId(id);
+            todo.setTitle(todoDto.getTitle());
+            todo.setStatus(UNCOMPLETED);
+            todo.setCreatedAt(LocalDateTime.now());
+            todo.setNote(todoDto.getNote());
+        }
+        return null;
+    }
+
 }
