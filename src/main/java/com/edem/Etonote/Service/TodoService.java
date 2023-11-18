@@ -23,4 +23,5 @@ public interface TodoService {
 
     List<Todo> findTodoByTodoListId(Long todoListId);
 
+    Todo updateTodo(Todo todoDto, Long id);
 }
