@@ -20,17 +20,18 @@ public class Todo {
     private Long todoId;
     private String title;
     private Status status;
-    private String note;
+    private String content;
     private LocalDateTime createdAt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "list_id", referencedColumnName = "listId")
-    private TodoList todoList;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "list_id", referencedColumnName = "listId")
+//    private TodoList todoList;
 
-    public Todo(String title, String note, TodoList todoList) {
+
+    public Todo(String title, String content, TodoList todoList) {
         this.title= title;
-        this.note = note;
-        this.todoList= todoList;
+        this.content = content;
+//        this.todoList= todoList;
     }
 
 }
