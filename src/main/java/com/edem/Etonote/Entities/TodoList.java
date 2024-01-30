@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,16 +18,16 @@ import java.util.Set;
 public class TodoList {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-
      private Long listId;
 
      private String listTitle;
 
-     @OneToMany(mappedBy = "todoList",fetch = FetchType.LAZY)
+     private LocalDateTime createdAt;
+     @OneToMany
      private Set<Todo> todos = new HashSet<>();
 
-     public TodoList (String listTitle){
-          this.listTitle =listTitle;
+     public TodoList(String listTitle, Set<Todo> todos) {
+          this.listTitle = listTitle;
+          this.todos = todos;
      }
-
 }
