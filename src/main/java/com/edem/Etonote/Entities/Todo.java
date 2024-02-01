@@ -22,6 +22,7 @@ public class Todo {
     private Status status;
     private String content;
     private LocalDateTime createdAt;
+    private LocalDateTime completedAt;
 
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "list_id", referencedColumnName = "listId")
