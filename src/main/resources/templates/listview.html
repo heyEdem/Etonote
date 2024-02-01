@@ -19,20 +19,17 @@
                                     <th>Title</th>
                                     <th>Note</th>
                                     <th>Status</th>
-                                    <th>Created</th>
+                                    <th>Created At</th>
                                 </thead>
                                 <tbody>
                                     <tr th:each="todo: ${todos}">
                                         <td th:text="${todo.getTodoId()}"></td>
                                         <td th:text="${todo.getTitle()}"></td>
-                                        <td th:text="${todo.getNote()}"></td>
+                                        <td th:text="${todo.getContent()}"></td>
                                         <td th:text="${todo.getStatus()}"></td>
                                         <td th:text="${todo.getCreatedAt()}"></td>
-                                        <td>
-                                            <a class="btn btn-danger">
-                                                <button class="btn btn-danger">Delete</button>
-                                            </a>
-                                        </td>
+                                        <td><a th:href="@{/view/{listId}(listId=${list.listId})}" class="btn btn-danger"><button class="btn btn-danger">Delete</button></a></td>
+                                        <td><a class="btn btn-secondary"><button class="btn btn-secondary">Complete</button></a></td>
                                     </tr>
                                 </tbody>
                             </table>
