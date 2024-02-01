@@ -5,7 +5,9 @@ import lombok.*;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -23,10 +25,10 @@ public class TodoList {
      private String listTitle;
 
      private LocalDateTime createdAt;
-     @OneToMany
-     private Set<Todo> todos = new HashSet<>();
+     @OneToMany(cascade = CascadeType.PERSIST)
+     private List<Todo> todos = new ArrayList<>();
 
-     public TodoList(String listTitle, Set<Todo> todos) {
+     public TodoList(String listTitle, List<Todo> todos) {
           this.listTitle = listTitle;
           this.todos = todos;
      }
