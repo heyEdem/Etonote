@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Service
 public interface TodoListService {
-    TodoList createList (String title);
+    TodoList createList (TodoList list);
 
     List<TodoList> findAllLists();
 

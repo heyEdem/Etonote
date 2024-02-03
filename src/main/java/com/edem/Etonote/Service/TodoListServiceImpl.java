@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -23,8 +24,9 @@ public class TodoListServiceImpl implements TodoListService {
 
 
     @Override
-    public TodoList createList(String title) {
-        return repository.save(new TodoList(title));
+    public TodoList createList(TodoList list) {
+        list.setCreatedAt(LocalDateTime.now());
+        return repository.save(list);
     }
 
     @Override
@@ -38,7 +40,7 @@ public class TodoListServiceImpl implements TodoListService {
         Optional<TodoList> list = findListById(listId);
 
         for(Todo todo: list.get().getTodos()){
-            todoService.deleteTodo(todo);
+            todoService.deleteTodo(todo.getTodoId());
         }
         repository.deleteById(listId);
     }
