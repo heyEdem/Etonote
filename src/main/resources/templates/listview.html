@@ -28,8 +28,8 @@
                                         <td th:text="${todo.getContent()}"></td>
                                         <td th:text="${todo.getStatus()}"></td>
                                         <td th:text="${todo.getCreatedAt()}"></td>
-                                        <td><a th:href="@{/view/{listId}(listId=${list.listId})}" class="btn btn-danger"><button class="btn btn-danger">Delete</button></a></td>
-                                        <td><a class="btn btn-secondary"><button class="btn btn-secondary">Complete</button></a></td>
+                                        <td><a th:href="@{/view/{listId}(listId=${list.listId})/{todoId}(todoId=${todo.getTodoId()})}" class="btn btn-danger"><button class="btn btn-danger">Delete</button></a></td>
+                                        <td><a th:href="@{/view/{listId}(listId=${list.listId})/{todoId}(todoId=${todo.getTodoId()})}" class="btn btn-secondary"><button class="btn btn-secondary">Complete</button></a></td>
                                     </tr>
                                 </tbody>
                             </table>

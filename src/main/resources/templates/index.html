@@ -17,15 +17,13 @@
                               <thead>
                               <th>Id</th>
                               <th>Title</th>
-<!--                              <th>Status</th>-->
-<!--                              <th>Note</th>-->
+
                               </thead>
                               <tbody>
                               <tr th:each="list: ${allLists}">
                                   <td th:text="${list.getListId()}"></td>
                                   <td th:text="${list.getListTitle()}"></td>
-<!--                                  <td th:text="${todo.getStatus()}"></td>-->
-<!--                                  <td  th:text="${todo.getNote()}"></td>-->
+
                                   <td>
                                       <a th:href="@{/view/{listId}(listId=${list.listId})}" class="btn btn-warning">
                                           <button class="btn btn-warning">View</button>
