@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static com.edem.Etonote.Entities.Status.COMPLETE;
 import static com.edem.Etonote.Entities.Status.UNCOMPLETED;
 
 @Service
@@ -55,7 +56,8 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void markAsCompleted(Long todoId) {
         Todo completedTodo = repository.findById(todoId).orElseThrow(()->new EntityNotFoundException("Todo Not Found"));
-        completedTodo.setStatus(Status.COMPLETE);
+        completedTodo.setStatus(COMPLETE);
+        completedTodo.setCompletedAt(LocalDateTime.now());
     }
 
     @Override
@@ -83,4 +85,14 @@ public class TodoServiceImpl implements TodoService {
         return null;
     }
 
+    @Override
+    public List<Todo> findByStatus(Status status) {
+        List<Todo> completedTodos = repository.findByStatusOrderByCreatedAt(COMPLETE);
+        List<Todo> uncompletedTodos = repository.findByStatusOrderByCreatedAt(UNCOMPLETED);
+
+        return repository.findByStatusOrderByCreatedAt(status);
+    }
+
+// TODO: 1/31/24 UPDATE TODO AND LIST
+    // TODO: 1/31/24  MVC VIEWS
 }
