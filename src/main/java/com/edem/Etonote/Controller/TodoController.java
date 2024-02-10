@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,18 +32,29 @@ public class TodoController {
         return "index";
     }
 
+    @GetMapping("/view/{listId}/{todoId}")
+    public String markAsCompleted(@PathVariable("todoId") Long todoId, @PathVariable("listId") Long listId){
+        todoService.markAsCompleted(todoId);
+        return "redirect:/view/{listId}";
+    }
+
+//    @GetMapping("/view/{listId}/{todoId}")
+//    public String markCompleted(Model model){
+//        return "redirect:/view/{listId}";
+//    }
+
 
     @GetMapping("/view/{listId}")
     public String getById(@PathVariable("listId") Long listId, Model model){
         Optional<TodoList> list = listService.findListById(listId);
-        List<Todo> todos = todoService.findTodoByTodoListId(listId);
+        List<Todo> todos = list.get().getTodos();
         model.addAttribute("todos",todos);
         return "listview";
     }
 
     @DeleteMapping("/view/{listId}/{todoId}")
-    public String deleteTodo(@PathVariable("todoId") Long todoId){
-        todoService.deleteTodo(todoService.findTodoById(todoId).get());
+    public String deleteTodo(@PathVariable("todoId") Long todoId, @PathVariable("listId") Long listId){
+        todoService.deleteTodo(todoId);
         return "redirect:/view/{listId}";
     }
 
